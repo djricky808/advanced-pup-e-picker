@@ -1,28 +1,31 @@
 import { Dog } from "./types";
 
-const baseURL = `http:/localhost:3000`;
+const baseURL = "http://localhost:3000";
 
-const getAllDogs = (): Promise<Dog[]> => {
+const getAllDogs = () => {
   // fill out method
-  return fetch(`${baseURL}/dogs`).then((response) => response.json());
-};
-
-const postDog = (dog: Omit<Dog, "id">) => {
-  // fill out method
-  fetch(`${baseURL}/dogs`, {
-    body: JSON.stringify(dog),
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((response) => {
-    if (!response.ok) throw new Error("Could not create dog");
+  return fetch(`${baseURL}/dogs`).then((response) => {
+    if (!response.ok) throw new Error("Could not fetch dogs");
     return response.json();
   });
 };
+
+const postDog = (dog: Dog) => {
+  // fill out method
+  return fetch(`${baseURL}/dogs`, {
+    method: "POST",
+    body: JSON.stringify(dog),
+    headers: { "Application-Type": "application/json" },
+  }).then((response) => {
+    if (!response.ok) throw new Error("Could not post dog");
+
+    return response.json();
+  });
+};
+
 const deleteDogRequest = (id: number) => {
   // fill out method
-  fetch(`${baseURL}/dogs/${id}`, {
+  return fetch(`${baseURL}/dogs/${id}`, {
     method: "DELETE",
   }).then((response) => {
     if (!response.ok) throw new Error("Could not delete dog");
@@ -30,16 +33,14 @@ const deleteDogRequest = (id: number) => {
   });
 };
 
-const patchFavoriteForDog = (dog: Dog) => {
+const patchFavoriteForDog = (id: number, dog: Dog) => {
   // fill out method
-  fetch(`${baseURL}/dog/${dog.id}`, {
-    body: JSON.stringify(dog),
+  return fetch(`${baseURL}/dogs/${id}`, {
     method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    body: JSON.stringify(dog),
+    headers: { "Content-Type": "application/json" },
   }).then((response) => {
-    if (!response.ok) throw new Error("Could not update dog.");
+    if (!response.ok) throw new Error("Could not update dog");
     return response.json();
   });
 };
