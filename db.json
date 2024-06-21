@@ -153,6 +153,13 @@
       "description": "My favorite dark type from Gen 2",
       "isFavorite": false,
       "id": 21
+    },
+    {
+      "name": "Growlithe",
+      "image": "/assets/blue-heeler.png",
+      "description": "The OG from Gen 1",
+      "isFavorite": false,
+      "id": 22
     }
   ]
 }

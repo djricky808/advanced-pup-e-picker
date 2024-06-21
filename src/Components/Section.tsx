@@ -24,7 +24,6 @@ export const Section = ({
           <div
             className={`selector ${activeTab === "favorited" ? "active" : ""}`}
             onClick={() => {
-              alert("click favorited");
               handleTabClick("favorited");
             }}
           >
@@ -37,7 +36,6 @@ export const Section = ({
               activeTab === "unfavorited" ? "active" : ""
             }`}
             onClick={() => {
-              alert("click unfavorited");
               handleTabClick("unfavorited");
             }}
           >
@@ -46,7 +44,6 @@ export const Section = ({
           <div
             className={`selector ${activeTab === "createDog" ? "active" : ""}`}
             onClick={() => {
-              alert("clicked create dog");
               handleTabClick("createDog");
             }}
           >
