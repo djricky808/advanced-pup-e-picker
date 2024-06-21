@@ -21,6 +21,7 @@ type TDogsProvider = {
   activeTab: TDogTabs | null;
   handleTabClick: (tab: TDogTabs) => void;
   isLoading: boolean;
+  setIsLoading: (isLoading: boolean) => void;
 };
 
 const DogsContext = createContext<TDogsProvider>({} as TDogsProvider);
@@ -28,7 +29,7 @@ const DogsContext = createContext<TDogsProvider>({} as TDogsProvider);
 export const DogsProvider = ({ children }: { children: ReactNode }) => {
   const [allDogs, setAllDogs] = useState<Dog[]>([]);
   const [activeTab, setActiveTab] = useState<TDogTabs | null>(null);
-  const [isLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const refetchDogs = () => {
     Requests.getAllDogs()
@@ -43,12 +44,15 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const createDog = (dog: Omit<Dog, "id">) => {
+    setIsLoading(true);
     return Requests.postDog(dog)
       .then(() => refetchDogs())
-      .catch(() => toast.error("Could not add dog!"));
+      .catch(() => toast.error("Could not add dog!"))
+      .finally(() => setIsLoading(false));
   };
 
   const favoriteDog = (dogID: number) => {
+    setIsLoading(true);
     setAllDogs(
       allDogs.map((dog) =>
         dog.id === dogID ? { ...dog, isFavorite: true } : dog
@@ -61,10 +65,12 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
       .catch(() => {
         setAllDogs(allDogs);
         toast.error("Could not favorite dog!");
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const unFavoriteDog = (dogID: number) => {
+    setIsLoading(true);
     setAllDogs(
       allDogs.map((dog) =>
         dog.id === dogID ? { ...dog, isFavorite: false } : dog
@@ -77,13 +83,16 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
       .catch(() => {
         setAllDogs(allDogs);
         toast.error("Could not unfavorite dog!");
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const deleteDog = (dogID: number) => {
+    setIsLoading(true);
     Requests.deleteDogRequest(dogID)
       .then(() => refetchDogs())
-      .catch(() => toast.error("Could not delete dog!"));
+      .catch(() => toast.error("Could not delete dog!"))
+      .finally(() => setIsLoading(false));
   };
 
   const handleTabClick = (tab: TDogTabs) => {
@@ -102,6 +111,7 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
         activeTab,
         handleTabClick,
         isLoading,
+        setIsLoading,
       }}
     >
       {children}

@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 export const CreateDogForm = () =>
   // no props allowed
   {
-    const { createDog } = useDogs();
+    const { createDog, isLoading } = useDogs();
 
     const [dogName, setDogName] = useState("");
     const [dogDescription, setDogDescription] = useState("");
@@ -41,6 +41,9 @@ export const CreateDogForm = () =>
           onChange={(e) => {
             setDogName(e.target.value);
           }}
+          placeholder="Dog Name"
+          value={dogName}
+          disabled={isLoading}
         />
         <label htmlFor="description">Dog Description</label>
         <textarea
@@ -51,6 +54,9 @@ export const CreateDogForm = () =>
           onChange={(e) => {
             setDogDescription(e.target.value);
           }}
+          placeholder="Dog Description"
+          value={dogDescription}
+          disabled={isLoading}
         ></textarea>
         <label htmlFor="picture">Select an Image</label>
         <select
@@ -58,6 +64,8 @@ export const CreateDogForm = () =>
           onChange={(e) => {
             setSelectedImage(e.target.value);
           }}
+          value={selectedImage}
+          disabled={isLoading}
         >
           {Object.entries(dogPictures).map(([label, pictureValue]) => {
             return (
@@ -67,7 +75,7 @@ export const CreateDogForm = () =>
             );
           })}
         </select>
-        <input type="submit" value="submit" />
+        <input type="submit" value="submit" disabled={isLoading} />
       </form>
     );
   };
