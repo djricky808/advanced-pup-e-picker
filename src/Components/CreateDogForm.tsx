@@ -28,7 +28,6 @@ export const CreateDogForm = () =>
               setDogName("");
               setDogDescription("");
               setSelectedImage("");
-              handleTabClick("createDog");
               toast.success("Dog Created");
             })
             .catch(() => {
