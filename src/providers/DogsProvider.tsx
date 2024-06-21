@@ -25,7 +25,7 @@ type TDogsProvider = {
 
 const DogsContext = createContext<TDogsProvider>({} as TDogsProvider);
 
-export const PDogsProvider = ({ children }: { children: ReactNode }) => {
+export const DogsProvider = ({ children }: { children: ReactNode }) => {
   const [allDogs, setAllDogs] = useState<Dog[]>([]);
   const [activeTab, setActiveTab] = useState<TDogTabs | null>(null);
   const [isLoading] = useState<boolean>(false);

@@ -5,13 +5,13 @@ import "./App.css";
 import "./index.css";
 import { Toaster } from "react-hot-toast";
 import { App } from "./App";
-import { PDogsProvider } from "./providers/DogsProvider";
+import { DogsProvider } from "./providers/DogsProvider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <PDogsProvider>
+    <DogsProvider>
       <Toaster />
       <App />
-    </PDogsProvider>
+    </DogsProvider>
   </React.StrictMode>
 );
