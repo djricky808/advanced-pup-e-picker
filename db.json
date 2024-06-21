@@ -146,6 +146,13 @@
       "description": "The newest electric type dog pokemon from gen 8",
       "isFavorite": true,
       "id": 20
+    },
+    {
+      "name": "Houndour",
+      "image": "/assets/boxer.jpeg",
+      "description": "My favorite dark type from Gen 2",
+      "isFavorite": false,
+      "id": 21
     }
   ]
 }

@@ -57,7 +57,7 @@ body {
 }
 #create-dog-form input[type="submit"] {
   margin-top: 20px;
-  color: black;
+  color: white;
 }
 
 #create-dog-form input {

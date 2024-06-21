@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 export const CreateDogForm = () =>
   // no props allowed
   {
-    const { createDog, isLoading } = useDogs();
+    const { createDog, isLoading, handleTabClick } = useDogs();
 
     const [dogName, setDogName] = useState("");
     const [dogDescription, setDogDescription] = useState("");
@@ -28,6 +28,8 @@ export const CreateDogForm = () =>
               setDogName("");
               setDogDescription("");
               setSelectedImage("");
+              handleTabClick("createDog");
+              toast.success("Dog Created");
             })
             .catch(() => {
               toast.error("Could not create dog!");
