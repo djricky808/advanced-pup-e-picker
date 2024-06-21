@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 export const CreateDogForm = () =>
   // no props allowed
   {
-    const { createDog, isLoading, handleTabClick } = useDogs();
+    const { createDog, isLoading } = useDogs();
 
     const [dogName, setDogName] = useState("");
     const [dogDescription, setDogDescription] = useState("");
