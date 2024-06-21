@@ -9,11 +9,11 @@ export const Section = ({
   label: string;
   children: ReactNode;
 }) => {
-const {allDogs, activeTab, handleTabClick} = useDogs();
+  const { allDogs, activeTab, handleTabClick } = useDogs();
 
-const favoritedDogs = allDogs.filter((dog) => dog.isFavorite === true)
+  const favoritedDogs = allDogs.filter((dog) => dog.isFavorite === true);
 
-const unFavoritedDogs = allDogs.filter((dog) => dog.isFavorite === false);
+  const unFavoritedDogs = allDogs.filter((dog) => dog.isFavorite === false);
 
   return (
     <section id="main-section">
@@ -24,8 +24,8 @@ const unFavoritedDogs = allDogs.filter((dog) => dog.isFavorite === false);
           <div
             className={`selector ${activeTab === "favorited" ? "active" : ""}`}
             onClick={() => {
-              alert("click favorited")
-              handleTabClick('favorited')
+              alert("click favorited");
+              handleTabClick("favorited");
             }}
           >
             favorited ( {favoritedDogs.length} )
@@ -33,19 +33,21 @@ const unFavoritedDogs = allDogs.filter((dog) => dog.isFavorite === false);
 
           {/* This should display the unfavorited count */}
           <div
-            className={`selector ${activeTab === "unfavorited" ? "active" : ""}`}
+            className={`selector ${
+              activeTab === "unfavorited" ? "active" : ""
+            }`}
             onClick={() => {
               alert("click unfavorited");
-              handleTabClick('unfavorited')
+              handleTabClick("unfavorited");
             }}
           >
             unfavorited ( {unFavoritedDogs.length} )
           </div>
           <div
-            className={`selector ${activeTab === 'createDog' ? 'active': ''}`}
+            className={`selector ${activeTab === "createDog" ? "active" : ""}`}
             onClick={() => {
               alert("clicked create dog");
-              handleTabClick('createDog')
+              handleTabClick("createDog");
             }}
           >
             create dog

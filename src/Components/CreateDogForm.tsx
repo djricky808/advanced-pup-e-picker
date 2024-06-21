@@ -23,13 +23,15 @@ export const CreateDogForm = () =>
             image: selectedImage,
             description: dogDescription,
             isFavorite: false,
-          }).then(() => {
-          setDogName('');
-          setDogDescription('');
-          setSelectedImage('');
-        }).catch(()=> {
-          toast.error('Could not create dog!')
-        })
+          })
+            .then(() => {
+              setDogName("");
+              setDogDescription("");
+              setSelectedImage("");
+            })
+            .catch(() => {
+              toast.error("Could not create dog!");
+            });
         }}
       >
         <h4>Create a New Dog</h4>

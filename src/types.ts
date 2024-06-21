@@ -10,5 +10,4 @@ export const dogSchema = z.object({
 
 export type Dog = z.infer<typeof dogSchema>;
 
-
-export type TDogTabs =  'favorited' | 'unfavorited' | 'createDog';
+export type TDogTabs = "favorited" | "unfavorited" | "createDog";

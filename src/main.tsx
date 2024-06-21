@@ -7,7 +7,6 @@ import { Toaster } from "react-hot-toast";
 import { App } from "./App";
 import { PDogsProvider } from "./providers/DogsProvider";
 
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <PDogsProvider>
