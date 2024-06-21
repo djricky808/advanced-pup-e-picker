@@ -1,1 +1,144 @@
-{"dogs":[{"name":"Angela","image":"/assets/dalmation.png","description":"Rover Hop OCR Southeast Rhodium Jewelery black Fiat","isFavorite":true,"id":0},{"name":"Mac","image":"/assets/cowardly.png","description":"olive Handcrafted hybrid South vamoose installation despite","isFavorite":false,"id":1},{"name":"Chandler","image":"/assets/blue-heeler.png","description":"Qatar Sports Gorgeous Iraq mollitia North card neural","isFavorite":true,"id":2},{"name":"Aditya","image":"/assets/boxer.png","description":"zero Account Synergized Cape Compatible generation dolorum","isFavorite":true,"id":3},{"name":"Cade","image":"/assets/boxer.png","description":"inasmuch Assistant Audi Gasoline Fresh however rich","isFavorite":false,"id":4},{"name":"Wilhelmine","image":"/assets/cowardly.png","description":"withdrawal yellow invoice AI Industrial Algerian Chips","isFavorite":true,"id":5},{"name":"Bennett","image":"/assets/chihuahua.avif","description":"Gallium exploit Ecuador North Officer Pangender commodi wireless","isFavorite":false,"id":6},{"name":"Candido","image":"/assets/corgi.png","description":"Brand CLI customized Bedfordshire intermix Gadolinium Yttrium Concrete","isFavorite":true,"id":7},{"name":"Price","image":"/assets/chihuahua.avif","description":"Baby Loan including ea Berkshire mole software","isFavorite":true,"id":8},{"name":"Heloise","image":"/assets/boxer.png","description":"New Jazz watch purple Ergonomic","isFavorite":false,"id":9},{"name":"Jena","image":"/assets/blue-heeler.png","description":"morph Southwest Buckinghamshire unknown neural","isFavorite":false,"id":10},{"name":"Garnet","image":"/assets/cowardly.png","description":"South back polite Colten West Northeast hertz","isFavorite":false,"id":11},{"name":"Palma","image":"/assets/corgi.png","description":"Principal maiores logistical modular West","isFavorite":true,"id":12},{"name":"Rose","image":"/assets/dalmation.png","description":"as Northeast Implementation payment writhe male Unbranded Stage","isFavorite":true,"id":13},{"name":"Antonietta","image":"/assets/blue-heeler.png","description":"lumen soluta Bespoke Northwest Manganese","isFavorite":true,"id":14},{"name":"Kailey","image":"/assets/chihuahua.avif","description":"Southeast matrix wee gray Diesel Future Card","isFavorite":false,"id":15},{"name":"Cheyanne","image":"/assets/chihuahua.avif","description":"um Auto up beside Intelligent Licensed following","isFavorite":true,"id":16},{"name":"Alvena","image":"/assets/cowardly.png","description":"Global Electronics bluetooth Soap Health","isFavorite":true,"id":17},{"name":"Laron","image":"/assets/corgi.png","description":"olive Granite Regional Electric transform Hat lumen","isFavorite":false,"id":18},{"name":"Dedric","image":"/assets/cowardly.png","description":"integrate non Northeast Developer Mountain temper coulomb COM","isFavorite":true,"id":19}]}
+{
+  "dogs": [
+    {
+      "name": "Angela",
+      "image": "/assets/dalmation.png",
+      "description": "Rover Hop OCR Southeast Rhodium Jewelery black Fiat",
+      "isFavorite": true,
+      "id": 0
+    },
+    {
+      "name": "Mac",
+      "image": "/assets/cowardly.png",
+      "description": "olive Handcrafted hybrid South vamoose installation despite",
+      "isFavorite": false,
+      "id": 1
+    },
+    {
+      "name": "Chandler",
+      "image": "/assets/blue-heeler.png",
+      "description": "Qatar Sports Gorgeous Iraq mollitia North card neural",
+      "isFavorite": true,
+      "id": 2
+    },
+    {
+      "name": "Aditya",
+      "image": "/assets/boxer.png",
+      "description": "zero Account Synergized Cape Compatible generation dolorum",
+      "isFavorite": true,
+      "id": 3
+    },
+    {
+      "name": "Cade",
+      "image": "/assets/boxer.png",
+      "description": "inasmuch Assistant Audi Gasoline Fresh however rich",
+      "isFavorite": false,
+      "id": 4
+    },
+    {
+      "name": "Wilhelmine",
+      "image": "/assets/cowardly.png",
+      "description": "withdrawal yellow invoice AI Industrial Algerian Chips",
+      "isFavorite": true,
+      "id": 5
+    },
+    {
+      "name": "Bennett",
+      "image": "/assets/chihuahua.avif",
+      "description": "Gallium exploit Ecuador North Officer Pangender commodi wireless",
+      "isFavorite": false,
+      "id": 6
+    },
+    {
+      "name": "Candido",
+      "image": "/assets/corgi.png",
+      "description": "Brand CLI customized Bedfordshire intermix Gadolinium Yttrium Concrete",
+      "isFavorite": true,
+      "id": 7
+    },
+    {
+      "name": "Price",
+      "image": "/assets/chihuahua.avif",
+      "description": "Baby Loan including ea Berkshire mole software",
+      "isFavorite": true,
+      "id": 8
+    },
+    {
+      "name": "Heloise",
+      "image": "/assets/boxer.png",
+      "description": "New Jazz watch purple Ergonomic",
+      "isFavorite": false,
+      "id": 9
+    },
+    {
+      "name": "Jena",
+      "image": "/assets/blue-heeler.png",
+      "description": "morph Southwest Buckinghamshire unknown neural",
+      "isFavorite": false,
+      "id": 10
+    },
+    {
+      "name": "Garnet",
+      "image": "/assets/cowardly.png",
+      "description": "South back polite Colten West Northeast hertz",
+      "isFavorite": false,
+      "id": 11
+    },
+    {
+      "name": "Palma",
+      "image": "/assets/corgi.png",
+      "description": "Principal maiores logistical modular West",
+      "isFavorite": true,
+      "id": 12
+    },
+    {
+      "name": "Rose",
+      "image": "/assets/dalmation.png",
+      "description": "as Northeast Implementation payment writhe male Unbranded Stage",
+      "isFavorite": true,
+      "id": 13
+    },
+    {
+      "name": "Antonietta",
+      "image": "/assets/blue-heeler.png",
+      "description": "lumen soluta Bespoke Northwest Manganese",
+      "isFavorite": true,
+      "id": 14
+    },
+    {
+      "name": "Kailey",
+      "image": "/assets/chihuahua.avif",
+      "description": "Southeast matrix wee gray Diesel Future Card",
+      "isFavorite": false,
+      "id": 15
+    },
+    {
+      "name": "Cheyanne",
+      "image": "/assets/chihuahua.avif",
+      "description": "um Auto up beside Intelligent Licensed following",
+      "isFavorite": true,
+      "id": 16
+    },
+    {
+      "name": "Alvena",
+      "image": "/assets/cowardly.png",
+      "description": "Global Electronics bluetooth Soap Health",
+      "isFavorite": true,
+      "id": 17
+    },
+    {
+      "name": "Laron",
+      "image": "/assets/corgi.png",
+      "description": "olive Granite Regional Electric transform Hat lumen",
+      "isFavorite": false,
+      "id": 18
+    },
+    {
+      "name": "Dedric",
+      "image": "/assets/cowardly.png",
+      "description": "integrate non Northeast Developer Mountain temper coulomb COM",
+      "isFavorite": true,
+      "id": 19
+    }
+  ]
+}

@@ -2,20 +2,27 @@ import { Dog } from "./types";
 
 const baseURL = "http://localhost:3000";
 
-const getAllDogs = () => {
+const getAllDogs = (): Promise <Dog[]> => {
   // fill out method
-  return fetch(`${baseURL}/dogs`).then((response) => {
-    if (!response.ok) throw new Error("Could not fetch dogs");
+  return fetch(`${baseURL}/dogs`)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Could not fetch dogs");
+    }
     return response.json();
-  });
+  })
+  .then((data) => data as Dog[])
+  .catch(() => { 
+    console.error("Could not fetch dogs");
+    return []});
 };
 
-const postDog = (dog: Dog) => {
+const postDog = (dog: Omit<Dog,'id'>) => {
   // fill out method
   return fetch(`${baseURL}/dogs`, {
     method: "POST",
     body: JSON.stringify(dog),
-    headers: { "Application-Type": "application/json" },
+    headers: { "Content-Type": "application/json" },
   }).then((response) => {
     if (!response.ok) throw new Error("Could not post dog");
 
@@ -33,11 +40,11 @@ const deleteDogRequest = (id: number) => {
   });
 };
 
-const patchFavoriteForDog = (id: number, dog: Dog) => {
+const patchFavoriteForDog = (id: number, body: Partial<Dog>) => {
   // fill out method
   return fetch(`${baseURL}/dogs/${id}`, {
     method: "PATCH",
-    body: JSON.stringify(dog),
+    body: JSON.stringify(body),
     headers: { "Content-Type": "application/json" },
   }).then((response) => {
     if (!response.ok) throw new Error("Could not update dog");
