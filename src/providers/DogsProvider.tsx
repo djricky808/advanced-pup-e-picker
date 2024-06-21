@@ -14,12 +14,12 @@ import toast from "react-hot-toast";
 type TDogsProvider = {
   allDogs: Dog[];
   setAllDogs: Dispatch<SetStateAction<Dog[]>>;
-  createDog:(dog: Omit<Dog, 'id'>) => void;
+  createDog:(dog: Omit<Dog, 'id'>) => Promise<unknown>;
   favoriteDog: (id: number) => void;
   unFavoriteDog: (id: number) => void;
   deleteDog: (id: number) => void;
-  activeTab: string;
-  setActiveTab: Dispatch<SetStateAction<TDogTabs>>;
+  activeTab: TDogTabs | null
+  handleTabClick: (tab: TDogTabs) => void;
   isLoading: boolean;
 };
 
@@ -27,7 +27,7 @@ const DogsContext = createContext<TDogsProvider>({} as TDogsProvider);
 
 export const PDogsProvider = ({children} : {children: ReactNode}) => {
   const [allDogs, setAllDogs] = useState<Dog[]>([]);
-  const [activeTab, setActiveTab] = useState<TDogTabs>("none");
+  const [activeTab, setActiveTab] = useState<TDogTabs |null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const refetchDogs = () => { 
@@ -43,7 +43,7 @@ export const PDogsProvider = ({children} : {children: ReactNode}) => {
   }, []);
 
   const createDog = (dog: Omit<Dog,'id'>) => {
-    Requests.postDog(dog)
+    return Requests.postDog(dog)
     .then(() => refetchDogs())
     .catch(() => toast.error('Could not add dog!'))
   }
@@ -83,6 +83,10 @@ export const PDogsProvider = ({children} : {children: ReactNode}) => {
     .catch(() => toast.error('Could not delete dog!'))
   }
 
+  const handleTabClick = (tab : TDogTabs) => {
+    setActiveTab(activeTab === tab? null : tab)
+  }
+
   return (
     <DogsContext.Provider
       value={{
@@ -93,7 +97,7 @@ export const PDogsProvider = ({children} : {children: ReactNode}) => {
         unFavoriteDog,
         deleteDog,
         activeTab,
-        setActiveTab,
+        handleTabClick,  
         isLoading,
       }}
     >

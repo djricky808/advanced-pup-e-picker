@@ -139,6 +139,13 @@
       "description": "integrate non Northeast Developer Mountain temper coulomb COM",
       "isFavorite": true,
       "id": 19
+    },
+    {
+      "name": "Yamper",
+      "image": "/assets/corgi.png",
+      "description": "The newest electric type dog pokemon from gen 8",
+      "isFavorite": true,
+      "id": 20
     }
   ]
 }

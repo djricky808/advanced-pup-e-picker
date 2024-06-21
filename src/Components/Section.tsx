@@ -9,7 +9,7 @@ export const Section = ({
   label: string;
   children: ReactNode;
 }) => {
-const {allDogs, activeTab, setActiveTab} = useDogs();
+const {allDogs, activeTab, handleTabClick} = useDogs();
 
 const favoritedDogs = allDogs.filter((dog) => dog.isFavorite === true)
 
@@ -25,7 +25,7 @@ const unFavoritedDogs = allDogs.filter((dog) => dog.isFavorite === false);
             className={`selector ${activeTab === "favorited" ? "active" : ""}`}
             onClick={() => {
               alert("click favorited")
-              setActiveTab('favorited');
+              handleTabClick('favorited')
             }}
           >
             favorited ( {favoritedDogs.length} )
@@ -36,7 +36,7 @@ const unFavoritedDogs = allDogs.filter((dog) => dog.isFavorite === false);
             className={`selector ${activeTab === "unfavorited" ? "active" : ""}`}
             onClick={() => {
               alert("click unfavorited");
-              setActiveTab('unfavorited')
+              handleTabClick('unfavorited')
             }}
           >
             unfavorited ( {unFavoritedDogs.length} )
@@ -45,7 +45,7 @@ const unFavoritedDogs = allDogs.filter((dog) => dog.isFavorite === false);
             className={`selector ${activeTab === 'createDog' ? 'active': ''}`}
             onClick={() => {
               alert("clicked create dog");
-              setActiveTab('createDog')
+              handleTabClick('createDog')
             }}
           >
             create dog

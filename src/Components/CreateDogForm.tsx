@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { dogPictures } from "../dog-pictures";
 import { useDogs } from "../providers/DogsProvider";
+import toast from "react-hot-toast";
 
 export const CreateDogForm = () =>
   // no props allowed
@@ -22,7 +23,13 @@ export const CreateDogForm = () =>
             image: selectedImage,
             description: dogDescription,
             isFavorite: false,
-          })
+          }).then(() => {
+          setDogName('');
+          setDogDescription('');
+          setSelectedImage('');
+        }).catch(()=> {
+          toast.error('Could not create dog!')
+        })
         }}
       >
         <h4>Create a New Dog</h4>
