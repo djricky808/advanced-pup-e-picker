@@ -14,21 +14,21 @@ import toast from "react-hot-toast";
 type TDogsProvider = {
   allDogs: Dog[];
   setAllDogs: Dispatch<SetStateAction<Dog[]>>;
-  createDog: (dog: Omit<Dog, "id">) => Promise<unknown>;
-  favoriteDog: (id: number) => void;
-  unFavoriteDog: (id: number) => void;
-  deleteDog: (id: number) => void;
-  activeTab: TDogTabs | null;
+  createDog: (dog: Omit<Dog, "id">) => Promise<string | void>;
+  updateFavoriteDog: (id: number, isFavorite: boolean) => Promise<void>;
+  deleteDog: (id: number) => Promise<void>;
+  activeTab: TDogTabs;
   handleTabClick: (tab: TDogTabs) => void;
   isLoading: boolean;
   setIsLoading: (isLoading: boolean) => void;
+  dogsList: Record<TDogTabs, Dog[]>;
 };
 
 const DogsContext = createContext<TDogsProvider>({} as TDogsProvider);
 
 export const DogsProvider = ({ children }: { children: ReactNode }) => {
   const [allDogs, setAllDogs] = useState<Dog[]>([]);
-  const [activeTab, setActiveTab] = useState<TDogTabs | null>(null);
+  const [activeTab, setActiveTab] = useState<TDogTabs>("all");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const refetchDogs = () => {
@@ -51,52 +51,43 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
       .finally(() => setIsLoading(false));
   };
 
-  const favoriteDog = (dogID: number) => {
-    setIsLoading(true);
+  const updateFavoriteDog = (dogID: number, isFavorite: boolean) => {
     setAllDogs(
-      allDogs.map((dog) =>
-        dog.id === dogID ? { ...dog, isFavorite: true } : dog
-      )
+      allDogs.map((dog) => (dog.id === dogID ? { ...dog, isFavorite } : dog))
     );
-    Requests.patchFavoriteForDog(dogID, { isFavorite: true })
+    return Requests.patchFavoriteForDog(dogID, { isFavorite: isFavorite })
       .then(() => {
         return;
       })
       .catch(() => {
         setAllDogs(allDogs);
-        toast.error("Could not favorite dog!");
-      })
-      .finally(() => setIsLoading(false));
-  };
-
-  const unFavoriteDog = (dogID: number) => {
-    setIsLoading(true);
-    setAllDogs(
-      allDogs.map((dog) =>
-        dog.id === dogID ? { ...dog, isFavorite: false } : dog
-      )
-    );
-    Requests.patchFavoriteForDog(dogID, { isFavorite: false })
-      .then(() => {
-        return;
-      })
-      .catch(() => {
-        setAllDogs(allDogs);
-        toast.error("Could not unfavorite dog!");
-      })
-      .finally(() => setIsLoading(false));
+        toast.error("Could not update dog!");
+      });
   };
 
   const deleteDog = (dogID: number) => {
-    setIsLoading(true);
-    Requests.deleteDogRequest(dogID)
+    setAllDogs(allDogs.filter((dog) => dog.id !== dogID));
+    return Requests.deleteDogRequest(dogID)
       .then(() => refetchDogs())
-      .catch(() => toast.error("Could not delete dog!"))
-      .finally(() => setIsLoading(false));
+      .catch(() => {
+        setAllDogs(allDogs);
+        toast.error("Could not delete dog!");
+      });
+  };
+
+  const favoritedDogs = allDogs.filter((dog) => dog.isFavorite);
+
+  const unfavoritedDogs = allDogs.filter((dog) => !dog.isFavorite);
+
+  const dogsList: Record<TDogTabs, Dog[]> = {
+    all: allDogs,
+    favorited: favoritedDogs,
+    unfavorited: unfavoritedDogs,
+    createDog: [],
   };
 
   const handleTabClick = (tab: TDogTabs) => {
-    setActiveTab(activeTab === tab ? null : tab);
+    setActiveTab(tab);
   };
 
   return (
@@ -105,13 +96,13 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
         allDogs,
         setAllDogs,
         createDog,
-        favoriteDog,
-        unFavoriteDog,
+        updateFavoriteDog,
         deleteDog,
         activeTab,
         handleTabClick,
         isLoading,
         setIsLoading,
+        dogsList,
       }}
     >
       {children}

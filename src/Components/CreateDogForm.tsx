@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { dogPictures } from "../dog-pictures";
 import { useDogs } from "../providers/DogsProvider";
 import toast from "react-hot-toast";
@@ -6,33 +6,41 @@ import toast from "react-hot-toast";
 export const CreateDogForm = () =>
   // no props allowed
   {
-    const { createDog, isLoading } = useDogs();
-
     const [dogName, setDogName] = useState("");
     const [dogDescription, setDogDescription] = useState("");
     const [selectedImage, setSelectedImage] = useState(dogPictures.BlueHeeler);
+
+    const { createDog, isLoading } = useDogs();
+
+    const resetDogFormStates = () => {
+      setDogName("");
+      setDogDescription("");
+      setSelectedImage("");
+    };
+
+    const handleSubmit = (e: FormEvent) => {
+      e.preventDefault();
+      createDog({
+        name: dogName,
+        image: selectedImage,
+        description: dogDescription,
+        isFavorite: false,
+      })
+        .then(() => {
+          resetDogFormStates();
+          toast.success("Dog Created");
+        })
+        .catch(() => {
+          toast.error("Could not create dog!");
+        });
+    };
 
     return (
       <form
         action=""
         id="create-dog-form"
         onSubmit={(e) => {
-          e.preventDefault();
-          createDog({
-            name: dogName,
-            image: selectedImage,
-            description: dogDescription,
-            isFavorite: false,
-          })
-            .then(() => {
-              setDogName("");
-              setDogDescription("");
-              setSelectedImage("");
-              toast.success("Dog Created");
-            })
-            .catch(() => {
-              toast.error("Could not create dog!");
-            });
+          handleSubmit(e);
         }}
       >
         <h4>Create a New Dog</h4>

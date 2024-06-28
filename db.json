@@ -29,27 +29,6 @@
       "id": 3
     },
     {
-      "name": "Cade",
-      "image": "/assets/boxer.png",
-      "description": "inasmuch Assistant Audi Gasoline Fresh however rich",
-      "isFavorite": false,
-      "id": 4
-    },
-    {
-      "name": "Wilhelmine",
-      "image": "/assets/cowardly.png",
-      "description": "withdrawal yellow invoice AI Industrial Algerian Chips",
-      "isFavorite": true,
-      "id": 5
-    },
-    {
-      "name": "Bennett",
-      "image": "/assets/chihuahua.avif",
-      "description": "Gallium exploit Ecuador North Officer Pangender commodi wireless",
-      "isFavorite": false,
-      "id": 6
-    },
-    {
       "name": "Candido",
       "image": "/assets/corgi.png",
       "description": "Brand CLI customized Bedfordshire intermix Gadolinium Yttrium Concrete",
@@ -151,7 +130,7 @@
       "name": "Houndour",
       "image": "/assets/boxer.jpeg",
       "description": "My favorite dark type from Gen 2",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 21
     },
     {

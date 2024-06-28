@@ -6,42 +6,26 @@ import { DogCard } from "./DogCard";
 
 export const Dogs = () => {
   // no props allowed
-  const {
-    allDogs,
-    favoriteDog,
-    unFavoriteDog,
-    deleteDog,
-    isLoading,
-    activeTab,
-  } = useDogs();
-
-  const filteredDogs = allDogs.filter((dog) => {
-    if (activeTab === "favorited") {
-      return dog.isFavorite;
-    } else if (activeTab === "unfavorited") {
-      return !dog.isFavorite;
-    } else {
-      return dog;
-    }
-  });
+  const { updateFavoriteDog, deleteDog, isLoading, activeTab, dogsList } =
+    useDogs();
 
   return (
     //  the "<> </>"" are called react fragments, it's like adding all the html inside
     // without adding an actual html element
     <>
       {/* Make all the dog cards show up here */}
-      {filteredDogs.map((dog) => (
+      {dogsList[activeTab].map((dog) => (
         <DogCard
           key={dog.id}
           dog={dog}
           onHeartClick={() => {
-            unFavoriteDog(dog.id);
+            void updateFavoriteDog(dog.id, false);
           }}
           onEmptyHeartClick={() => {
-            favoriteDog(dog.id);
+            void updateFavoriteDog(dog.id, true);
           }}
           onTrashIconClick={() => {
-            deleteDog(dog.id);
+            void deleteDog(dog.id);
           }}
           isLoading={isLoading}
         />
