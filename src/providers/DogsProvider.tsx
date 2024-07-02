@@ -1,7 +1,5 @@
 import {
-  Dispatch,
   ReactNode,
-  SetStateAction,
   createContext,
   useContext,
   useEffect,
@@ -12,15 +10,12 @@ import { Requests } from "../api";
 import toast from "react-hot-toast";
 
 type TDogsProvider = {
-  allDogs: Dog[];
-  setAllDogs: Dispatch<SetStateAction<Dog[]>>;
-  createDog: (dog: Omit<Dog, "id">) => Promise<string | void>;
+  createDog: (dog: Omit<Dog, "id">) => Promise<void>;
   updateFavoriteDog: (id: number, isFavorite: boolean) => Promise<void>;
   deleteDog: (id: number) => Promise<void>;
   activeTab: TDogTabs;
   handleTabClick: (tab: TDogTabs) => void;
   isLoading: boolean;
-  setIsLoading: (isLoading: boolean) => void;
   dogsList: Record<TDogTabs, Dog[]>;
 };
 
@@ -32,22 +27,24 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const refetchDogs = () => {
-    Requests.getAllDogs()
-      .then((dogs) => setAllDogs(dogs))
+    return Requests.getAllDogs()
+      .then((dogs: Dog[]) => setAllDogs(dogs))
       .catch(() => {
         toast.error("Could not get dogs.");
       });
   };
 
   useEffect(() => {
-    refetchDogs();
+    void refetchDogs();
   }, []);
 
   const createDog = (dog: Omit<Dog, "id">) => {
     setIsLoading(true);
     return Requests.postDog(dog)
       .then(() => refetchDogs())
-      .catch(() => toast.error("Could not add dog!"))
+      .catch(() => {
+        toast.error("Could not add dog!");
+      })
       .finally(() => setIsLoading(false));
   };
 
@@ -93,15 +90,12 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
   return (
     <DogsContext.Provider
       value={{
-        allDogs,
-        setAllDogs,
         createDog,
         updateFavoriteDog,
         deleteDog,
         activeTab,
         handleTabClick,
         isLoading,
-        setIsLoading,
         dogsList,
       }}
     >

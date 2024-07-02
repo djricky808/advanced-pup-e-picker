@@ -6,16 +6,18 @@ import toast from "react-hot-toast";
 export const CreateDogForm = () =>
   // no props allowed
   {
+    const defaultImage = dogPictures.BlueHeeler;
+
     const [dogName, setDogName] = useState("");
     const [dogDescription, setDogDescription] = useState("");
-    const [selectedImage, setSelectedImage] = useState(dogPictures.BlueHeeler);
+    const [selectedImage, setSelectedImage] = useState(defaultImage);
 
     const { createDog, isLoading } = useDogs();
 
     const resetDogFormStates = () => {
       setDogName("");
       setDogDescription("");
-      setSelectedImage("");
+      setSelectedImage(defaultImage);
     };
 
     const handleSubmit = (e: FormEvent) => {

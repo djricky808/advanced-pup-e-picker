@@ -122,21 +122,21 @@
     {
       "name": "Yamper",
       "image": "/assets/corgi.png",
-      "description": "The newest electric type dog pokemon from gen 8",
-      "isFavorite": true,
+      "description": "The Electric Corgi from Gen 8",
+      "isFavorite": false,
       "id": 20
     },
     {
       "name": "Houndour",
       "image": "/assets/boxer.jpeg",
       "description": "My favorite dark type from Gen 2",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 21
     },
     {
       "name": "Growlithe",
-      "image": "/assets/blue-heeler.png",
-      "description": "The OG from Gen 1",
+      "image": "",
+      "description": "The OG from generation 1",
       "isFavorite": false,
       "id": 22
     }

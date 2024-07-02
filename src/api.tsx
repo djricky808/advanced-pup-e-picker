@@ -2,30 +2,29 @@ import { Dog } from "./types";
 
 const baseURL = "http://localhost:3000";
 
-const getAllDogs = (): Promise <Dog[]> => {
+const getAllDogs = () => {
   // fill out method
-  return fetch(`${baseURL}/dogs`)
-  .then((response) => {
+  return fetch(`${baseURL}/dogs`).then((response) => {
     if (!response.ok) {
-      throw new Error("Could not fetch dogs");
+      throw new Error(
+        `HTTP failed with the status code of : ${response.status}`
+      );
     }
     return response.json();
-  })
-  .then((data) => data as Dog[])
-  .catch(() => { 
-    console.error("Could not fetch dogs");
-    return []});
+  });
 };
 
-const postDog = (dog: Omit<Dog,'id'>) => {
+const postDog = (dog: Omit<Dog, "id">) => {
   // fill out method
   return fetch(`${baseURL}/dogs`, {
     method: "POST",
     body: JSON.stringify(dog),
     headers: { "Content-Type": "application/json" },
   }).then((response) => {
-    if (!response.ok) throw new Error("Could not post dog");
-
+    if (!response.ok)
+      throw new Error(
+        `HTTP failed with the status code of : ${response.status}`
+      );
     return response.json();
   });
 };
@@ -35,7 +34,10 @@ const deleteDogRequest = (id: number) => {
   return fetch(`${baseURL}/dogs/${id}`, {
     method: "DELETE",
   }).then((response) => {
-    if (!response.ok) throw new Error("Could not delete dog");
+    if (!response.ok)
+      throw new Error(
+        `HTTP failed with the status code of : ${response.status}`
+      );
     return response.json();
   });
 };
@@ -47,7 +49,10 @@ const patchFavoriteForDog = (id: number, body: Partial<Dog>) => {
     body: JSON.stringify(body),
     headers: { "Content-Type": "application/json" },
   }).then((response) => {
-    if (!response.ok) throw new Error("Could not update dog");
+    if (!response.ok)
+      throw new Error(
+        `HTTP failed with the status code of : ${response.status}`
+      );
     return response.json();
   });
 };
